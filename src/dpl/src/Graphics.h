@@ -50,6 +50,10 @@ class Graphics : public gui::Renderer
   void binSearch(const Cell* cell, int xl, int yl, int xh, int yh);
   void endPlacement();
 
+  // Save a file
+  void saveCellPlot(std::string prefix, unsigned int iter);
+  void drawDetailed(gui::Painter& painter);
+
   // From Renderer API
   virtual void drawObjects(gui::Painter& painter) override;
 

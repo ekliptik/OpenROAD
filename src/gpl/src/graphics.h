@@ -34,6 +34,9 @@ class Graphics : public gui::Renderer
   // Draw the graphics; optionally pausing afterwards
   void cellPlot(bool pause = false);
 
+  // Save a file
+  void saveCellPlot(std::string prefix, unsigned int iter);
+
   // Show a message in the status bar
   void status(const std::string& message);
 

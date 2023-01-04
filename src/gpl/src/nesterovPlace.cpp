@@ -489,7 +489,7 @@ int NesterovPlace::doNesterovPlace(int start_iter)
   }
 
   if (graphics_) {
-    graphics_->cellPlot(true);
+    graphics_->cellPlot(false);
   }
 
   // backTracking variable.
@@ -628,9 +628,13 @@ int NesterovPlace::doNesterovPlace(int start_iter)
       bool update
           = (iter == 0 || (iter + 1) % npVars_.debug_update_iterations == 0);
       if (update) {
+        log_->report("GRAPHICS UPDATE!");
         bool pause
             = (iter == 0 || (iter + 1) % npVars_.debug_pause_iterations == 0);
-        graphics_->cellPlot(pause);
+        graphics_->cellPlot(false);
+        // if (iter < 10) {
+        //   graphics_->saveCellPlot("Nesterov",iter);
+        // }
       }
     }
 
@@ -781,7 +785,7 @@ int NesterovPlace::doNesterovPlace(int start_iter)
 
   if (graphics_) {
     graphics_->status("End placement");
-    graphics_->cellPlot(true);
+    graphics_->cellPlot(false);
   }
   return iter;
 }

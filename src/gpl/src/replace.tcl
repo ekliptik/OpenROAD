@@ -82,7 +82,7 @@ proc global_placement { args } {
       -timing_driven_net_reweight_overflow \
       -timing_driven_net_weight_max \
       -timing_driven_nets_percentage \
-      -pad_left -pad_right} \
+      -pad_left -pad_right -max_iter} \
     flags {-skip_initial_place \
       -skip_nesterov_place \
       -timing_driven \
@@ -302,6 +302,12 @@ proc global_placement { args } {
     sta::check_positive_integer "-pad_right" $pad_right
     gpl::set_pad_right_cmd $pad_right
   }
+
+  # if { [info exists keys(-max_iter)] } {
+  #   set max_iter $keys(-max_iter)
+  #   sta::check_positive_integer "-max_iter" $max_iter
+  #   gpl::set_nesv_place_iter_cmd $max_iter
+  # }
 
   if { [ord::db_has_rows] } {
     sta::check_argc_eq0 "global_placement" $args

@@ -318,12 +318,18 @@ void Opendp::place()
       }
     }
   }
+  unsigned int i = 0;
   for (Cell* cell : sorted_cells) {
     if (!isMultiRow(cell) && cellFitsInCore(cell)) {
       if (!mapMove(cell)) {
         shiftMove(cell);
       }
     }
+    if (i % 10 == 0) {
+      gui::Gui::get()->redraw();
+      graphics_->saveCellPlot("DPLplace", i / 10);
+    }
+    i++;
   }
   // This has negligible benefit -cherry
   // anneal();

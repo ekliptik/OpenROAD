@@ -34,6 +34,7 @@
 #include "Graphics.h"
 
 #include "dpl/Opendp.h"
+#include "spdlog/fmt/fmt.h"
 
 namespace dpl {
 
@@ -80,6 +81,23 @@ void Graphics::binSearch(const Cell* cell, int xl, int yl, int xh, int yh)
   int xh_dbu = core.xMin() + xh * dp_->getSiteWidth();
   int yh_dbu = core.yMin() + yh * dp_->getRowHeight();
   searched_.push_back(Rect(xl_dbu, yl_dbu, xh_dbu, yh_dbu));
+}
+
+
+void Graphics::saveCellPlot(std::string prefix, unsigned int iter) {
+  // gui::Gui::get()->saveImage(fmt::format("{}{:03}.png", prefix, iter),
+  // odb::Rect(), 100,
+  // {
+  //   {"Layers/met1", false},
+  //   {"Layers/via", false},
+  //   {"Layers/met2", false},
+  //   {"Layers/via2", false},
+  //   {"Layers/met3", false},
+  //   {"Layers/via3", false},
+  //   {"Layers/met4", false},
+  //   {"Layers/via4", false},
+  //   {"Layers/met5", false},
+  // });
 }
 
 void Graphics::endPlacement()

@@ -203,7 +203,7 @@ class Opendp
   int64_t hpwl(dbNet* net) const;
   void findDisplacementStats();
   void optimizeMirroring();
-
+  vector<Cell> cells_;
   const vector<Cell>& getCells() const { return cells_; }
   Rect getCore() const { return core_; }
   int getRowHeight() const { return row_height_; }
@@ -378,7 +378,7 @@ class Opendp
   InstPaddingMap inst_padding_map_;
   MasterPaddingMap master_padding_map_;
 
-  vector<Cell> cells_;
+
   vector<Group> groups_;
 
   map<const dbMaster*, Master> db_master_map_;

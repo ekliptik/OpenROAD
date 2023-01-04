@@ -8,6 +8,7 @@
 #include "nesterovPlace.h"
 #include "placerBase.h"
 #include "utl/Logger.h"
+#include "spdlog/fmt/fmt.h"
 
 namespace gpl {
 
@@ -223,6 +224,22 @@ void Graphics::cellPlot(bool pause)
     reportSelected();
     gui::Gui::get()->pause();
   }
+}
+
+void Graphics::saveCellPlot(std::string prefix, unsigned int iter) {
+  gui::Gui::get()->saveImage(fmt::format("{}{:03}.png", prefix, iter),
+  odb::Rect(), 100,
+  {
+    {"Layers/met1", false},
+    {"Layers/via", false},
+    {"Layers/met2", false},
+    {"Layers/via2", false},
+    {"Layers/met3", false},
+    {"Layers/via3", false},
+    {"Layers/met4", false},
+    {"Layers/via4", false},
+    {"Layers/met5", false},
+  });
 }
 
 gui::SelectionSet Graphics::select(odb::dbTechLayer* layer,
